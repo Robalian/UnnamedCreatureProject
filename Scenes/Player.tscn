@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://bd1hwwsrphg1s"]
+
+[ext_resource type="Texture2D" uid="uid://rthwor7tho6c" path="res://Assets/Character.png" id="1_0y7nr"]
+[ext_resource type="Script" uid="uid://bn6lqxok2eb7k" path="res://Src/Player.cs" id="1_kyqiw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac36l"]
+atlas = ExtResource("1_0y7nr")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5s0i"]
+atlas = ExtResource("1_0y7nr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58kg2"]
+atlas = ExtResource("1_0y7nr")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3oqx"]
+atlas = ExtResource("1_0y7nr")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2gjd"]
+atlas = ExtResource("1_0y7nr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jralq"]
+atlas = ExtResource("1_0y7nr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_osrpb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ac36l")
+}],
+"loop": true,
+"name": &"idle_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5s0i")
+}],
+"loop": true,
+"name": &"idle_R",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58kg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3oqx")
+}],
+"loop": true,
+"name": &"walk_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2gjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jralq")
+}],
+"loop": true,
+"name": &"walk_R",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7tbp3"]
+height = 52.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_kyqiw")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -30)
+sprite_frames = SubResource("SpriteFrames_osrpb")
+animation = &"walk_R"
+frame_progress = 0.39151484
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -27)
+shape = SubResource("CapsuleShape2D_7tbp3")
