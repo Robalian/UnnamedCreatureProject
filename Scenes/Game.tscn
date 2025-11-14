@@ -1,10 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://vw0o6o3mfk4d"]
+[gd_scene load_steps=6 format=3 uid="uid://vw0o6o3mfk4d"]
 
+[ext_resource type="Script" uid="uid://duam0i3j300e" path="res://Src/Map.cs" id="1_gl6un"]
 [ext_resource type="PackedScene" uid="uid://bd1hwwsrphg1s" path="res://Scenes/Player.tscn" id="1_iukft"]
+[ext_resource type="Texture2D" uid="uid://b5jvafondgq1x" path="res://Assets/Ground.png" id="2_j5yw3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kldst"]
+texture = ExtResource("2_j5yw3")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_b2bpf"]
+sources/0 = SubResource("TileSetAtlasSource_kldst")
 
 [node name="Game" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_iukft")]
+[node name="Map" type="Node" parent="."]
+script = ExtResource("1_gl6un")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Ground" type="TileMapLayer" parent="Map"]
+scale = Vector2(1.5, 1.5)
+tile_set = SubResource("TileSet_b2bpf")
+
+[node name="Player" parent="." instance=ExtResource("1_iukft")]
+z_index = 1
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
