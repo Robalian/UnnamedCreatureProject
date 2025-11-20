@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://vw0o6o3mfk4d"]
+[gd_scene load_steps=8 format=3 uid="uid://vw0o6o3mfk4d"]
 
 [ext_resource type="Script" uid="uid://duam0i3j300e" path="res://Src/Map.cs" id="1_gl6un"]
 [ext_resource type="PackedScene" uid="uid://bd1hwwsrphg1s" path="res://Scenes/Player.tscn" id="1_iukft"]
 [ext_resource type="Texture2D" uid="uid://b5jvafondgq1x" path="res://Assets/Ground.png" id="2_j5yw3"]
+[ext_resource type="PackedScene" uid="uid://mhkucv2e8mxg" path="res://Scenes/UI/Inventory.tscn" id="4_kldst"]
+[ext_resource type="PackedScene" uid="uid://dvglfdxbnpiia" path="res://Scenes/UI/Hotbar.tscn" id="5_b2bpf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kldst"]
 texture = ExtResource("2_j5yw3")
@@ -26,3 +28,13 @@ z_index = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Inventory" parent="HUD" instance=ExtResource("4_kldst")]
+visible = false
+z_index = 2
+
+[node name="Hotbar" parent="HUD" instance=ExtResource("5_b2bpf")]
+grow_horizontal = 2
+grow_vertical = 2

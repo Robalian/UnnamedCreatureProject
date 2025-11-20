@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddhgg4yhydjj1"]
+
+[ext_resource type="Texture2D" uid="uid://bv4omwak4g3a0" path="res://Assets/UI/InventorySlot.png" id="1_owa7q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mnslx"]
+
+[node name="InventorySlot" type="Panel"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mnslx")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_owa7q")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
